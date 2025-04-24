@@ -53,11 +53,12 @@ export default class PureTaskListComponent {
       ...arr.filter((t) => t.state === 'TASK_PINNED'),
       ...arr.filter((t) => t.state !== 'TASK_PINNED'),
     ];
-    const filteredTasks = initialTasks.filter(
-      (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'
-    );
-    this.tasksInOrder = filteredTasks.filter(
-      (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'
-    );
+    // const filteredTasks = initialTasks.filter(
+    //   (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'
+    // );
+    // this.tasksInOrder = filteredTasks.filter(
+    //   (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED'
+    // );
+    this.tasksInOrder = initialTasks
   }
 }

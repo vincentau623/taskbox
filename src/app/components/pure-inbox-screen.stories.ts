@@ -1,4 +1,3 @@
-
 import type { Meta, StoryObj } from '@storybook/angular';
 
 import { importProvidersFrom } from '@angular/core';
@@ -8,7 +7,7 @@ import { TasksState } from '../state/task.state';
 
 import { moduleMetadata, applicationConfig } from '@storybook/angular';
 
- import { fireEvent, within } from '@storybook/test';
+import { fireEvent, within } from '@storybook/test';
 
 import { CommonModule } from '@angular/common';
 
@@ -41,12 +40,12 @@ export const Error: Story = {
   },
 };
 
- export const WithInteractions: Story = {
-   play: async ({ canvasElement }) => {
-     const canvas = within(canvasElement);
-     // Simulates pinning the first task
-     await fireEvent.click(canvas.getByLabelText('pinTask-1'));
-     // Simulates pinning the third task
-     await fireEvent.click(canvas.getByLabelText('pinTask-3'));
-   },
- };
+export const WithInteractions: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    // Simulates pinning the first task
+    await fireEvent.click(canvas.getByLabelText('pinTask-1'));
+    // Simulates pinning the third task
+    await fireEvent.click(canvas.getByLabelText('pinTask-3'));
+  },
+};

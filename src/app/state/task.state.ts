@@ -73,9 +73,10 @@ export class TasksState {
     const task = getState().tasks.find((task) => task.id === payload);
 
     if (task) {
+      const updatedState  = task.state === 'TASK_PINNED' ? 'TASK_INBOX' : 'TASK_PINNED';
       const updatedTask: Task = {
         ...task,
-        state: 'TASK_PINNED',
+        state: updatedState,
       };
       setState(
         patch({
