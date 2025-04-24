@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { State, Selector, Action, StateContext } from '@ngxs/store';
 import { patch, updateItem } from '@ngxs/store/operators';
@@ -8,6 +7,7 @@ import { Task } from '../models/task.model';
 export const actions = {
   ARCHIVE_TASK: 'ARCHIVE_TASK',
   PIN_TASK: 'PIN_TASK',
+  ERROR: 'APP_ERROR',
 };
 
 export class ArchiveTask {
@@ -20,6 +20,11 @@ export class PinTask {
   static readonly type = actions.PIN_TASK;
 
   constructor(public payload: string) {}
+}
+// The class definition for our error field
+export class AppError {
+  static readonly type = actions.ERROR;
+  constructor(public payload: boolean) {}
 }
 
 // The initial state of our store when the app loads.
@@ -103,5 +108,16 @@ export class TasksState {
         })
       );
     }
+  }
+  // Function to handle how the state should be updated when the action is triggered
+  @Action(AppError)
+  setAppError(
+    { patchState, getState }: StateContext<TaskStateModel>,
+    { payload }: AppError
+  ) {
+    const state = getState();
+    patchState({
+      error: !state.error,
+    });
   }
 }
